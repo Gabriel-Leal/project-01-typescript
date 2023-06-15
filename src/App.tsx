@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-import { Post } from "./components/Post";
+import { Post, PostType } from "./components/Post";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 
@@ -10,7 +9,7 @@ import styles from "./App.module.css";
 // publishedAt: Date
 // content: string
 
-const posts = [
+const posts: PostType[] = [
   {
     id: 1,
     author: {
@@ -68,23 +67,12 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          {/* {posts.map((item) => (
-            <Post
-              author={item.author}
-              content={item.content}
-              publishedAt={item.publishedAt}
-            />
-          ))} */}
-          {posts.map((item, index) => {
-            return (
-              <Post
-                key={item.id}
-                author={item.author}
-                content={item.content}
-                publishedAt={item.publishedAt}
-              />
-            );
-          })}
+          {posts.map((item) => (
+            <Post key={item.id} post={item} />
+          ))}
+          {/* {posts.map((item) => {
+            return <Post key={item.id} post={post} />;
+          })} */}
         </main>
       </div>
     </>
